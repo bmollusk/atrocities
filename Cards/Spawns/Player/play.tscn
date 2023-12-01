@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6m6q53ykyin3"]
+
+[ext_resource type="Texture2D" uid="uid://b62dwkhgmvasi" path="res://icon.svg" id="1_hfobs"]
+[ext_resource type="Script" path="res://Cards/Spawns/Player/play.gd" id="1_ixiph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghoh1"]
+size = Vector2(123, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbe5c"]
+size = Vector2(71, 63)
+
+[node name="Play" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ixiph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_ghoh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -63)
+scale = Vector2(0.960938, 1.84375)
+texture = ExtResource("1_hfobs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+
+[node name="Overlay" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Overlay"]
+visible = false
+clip_contents = false
+offset_left = -93.0
+offset_top = -243.0
+offset_right = 105.0
+offset_bottom = -176.0
+pivot_offset = Vector2(100, 0)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]damage"
+fit_content = true
+scroll_active = false
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.5, -64)
+shape = SubResource("RectangleShape2D_lbe5c")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

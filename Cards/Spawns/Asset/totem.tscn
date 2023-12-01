@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0h4kqukv251"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_7fqff"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/totem.gd" id="2_6io5q"]
+[ext_resource type="Texture2D" uid="uid://ordw56vttmdd" path="res://Cards/Spawns/Asset/Images/flowerbed.png" id="3_shgda"]
+[ext_resource type="Texture2D" uid="uid://bsiyrpeyt2g3q" path="res://Cards/Spawns/Asset/Images/eye.png" id="4_1wgc2"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/Tear.gd" id="5_lbds0"]
+[ext_resource type="Texture2D" uid="uid://ctunmdtatlavl" path="res://Cards/Spawns/Asset/Images/tear.png" id="6_lfdcy"]
+[ext_resource type="AudioStream" uid="uid://dwj0v8y2podyi" path="res://Audio/splat.wav" id="7_p7vvq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56oq6"]
+radius = 57.0
+height = 262.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2obe3"]
+radius = 629.039
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wp82b"]
+
+[node name="Totem" instance=ExtResource("1_7fqff")]
+script = ExtResource("2_6io5q")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_shgda")
+hframes = 16
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(6, 77)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_56oq6")
+
+[node name="Eyes" type="Node2D" parent="." index="2"]
+position = Vector2(2, -55)
+
+[node name="Eye" type="Sprite2D" parent="Eyes" index="0"]
+position = Vector2(0, 30)
+texture = ExtResource("4_1wgc2")
+
+[node name="Eye2" type="Sprite2D" parent="Eyes" index="1"]
+position = Vector2(0, -44)
+texture = ExtResource("4_1wgc2")
+
+[node name="Eye3" type="Sprite2D" parent="Eyes" index="2"]
+position = Vector2(0, -120)
+texture = ExtResource("4_1wgc2")
+
+[node name="Eye4" type="Sprite2D" parent="Eyes" index="3"]
+position = Vector2(0, -195)
+texture = ExtResource("4_1wgc2")
+
+[node name="Eye5" type="Sprite2D" parent="Eyes" index="4"]
+position = Vector2(0, -272)
+texture = ExtResource("4_1wgc2")
+
+[node name="Eye6" type="Sprite2D" parent="Eyes" index="5"]
+position = Vector2(0, -353)
+texture = ExtResource("4_1wgc2")
+
+[node name="Projectiles" type="Node2D" parent="." index="3"]
+
+[node name="AttackRadius" type="Area2D" parent="." index="4"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius" index="0"]
+position = Vector2(-2, -167)
+shape = SubResource("CircleShape2D_2obe3")
+
+[node name="Tear" type="AnimatableBody2D" parent="." index="5"]
+visible = false
+collision_layer = 0
+collision_mask = 16
+sync_to_physics = false
+script = ExtResource("5_lbds0")
+damage = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Tear" index="0"]
+texture = ExtResource("6_lfdcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tear" index="1"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_wp82b")
+
+[node name="Timer" type="Timer" parent="." index="6"]
+wait_time = 0.5
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource("7_p7vvq")
+max_distance = 1000.0
+attenuation = 2.0
+bus = &"TableSounds"
+
+[connection signal="area_entered" from="AttackRadius" to="." method="_on_attack_radius_area_entered"]
+[connection signal="area_exited" from="AttackRadius" to="." method="_on_attack_radius_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

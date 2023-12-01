@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cugfbi5aipcyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkn0h"]
+border_width_left = 13
+border_blend = true
+corner_detail = 13
+expand_margin_left = 4.0
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cybmn"]
+border_width_left = 10
+border_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_blend = true
+expand_margin_left = 4.0
+
+[resource]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_fkn0h")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_cybmn")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ynmr4gf8udxd"]
+
+[ext_resource type="Script" path="res://AIs/game_ai.gd" id="1_5kq7k"]
+[ext_resource type="Script" path="res://AIs/AIController.gd" id="2_2fxgu"]
+[ext_resource type="PackedScene" uid="uid://bmsbntx0y201s" path="res://addons/astar2d_grid_node/astar2d_grid_node.tscn" id="3_2l177"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auv1p"]
+size = Vector2(2306, 1500)
+
+[node name="GameAI" type="Node2D" node_paths=PackedStringArray("ai_controller")]
+script = ExtResource("1_5kq7k")
+ai_controller = NodePath("AIController")
+
+[node name="DecisionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AStar2DGridNode" parent="." instance=ExtResource("3_2l177")]
+grid_size = Vector2i(16, 16)
+enable_debug = true
+debug_editor_only = true
+debug_point_size = 2.0
+debug_point_border_size = 0.5
+enabled_point_fill_color = Color(0.980392, 0.501961, 0.447059, 1)
+enabled_point_border_color = Color(1, 1, 1, 1)
+disabled_point_fill_color = Color(0.439216, 0.501961, 0.564706, 1)
+disabled_point_border_color = Color(1, 1, 1, 1)
+
+[node name="AIController" type="Node2D" parent="." node_paths=PackedStringArray("ai_parent", "astar_grid")]
+script = ExtResource("2_2fxgu")
+ai_parent = NodePath("..")
+astar_grid = NodePath("../AStar2DGridNode")
+
+[node name="VisibleArea" type="Area2D" parent="AIController"]
+collision_layer = 2
+collision_mask = 27
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AIController/VisibleArea"]
+position = Vector2(0, -136)
+shape = SubResource("RectangleShape2D_auv1p")
+
+[connection signal="decision_made" from="." to="." method="_on_decision_made"]
+[connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]
+[connection signal="area_entered" from="AIController/VisibleArea" to="AIController" method="_on_visible_area_area_entered"]
+[connection signal="area_exited" from="AIController/VisibleArea" to="AIController" method="_on_visible_area_area_exited"]
+[connection signal="body_entered" from="AIController/VisibleArea" to="AIController" method="_on_visible_area_body_entered"]
+[connection signal="body_exited" from="AIController/VisibleArea" to="AIController" method="_on_visible_area_body_exited"]

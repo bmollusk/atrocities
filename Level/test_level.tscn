@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgwa7jqfl1hm8"]
+
+[ext_resource type="Script" path="res://Level/test_level.gd" id="1_0eu2r"]
+[ext_resource type="PackedScene" uid="uid://718xxctblgwb" path="res://Table/table.tscn" id="1_ahw47"]
+[ext_resource type="PackedScene" uid="uid://b8o7dy85mfa30" path="res://Backgrounds/background.tscn" id="1_rrpkp"]
+[ext_resource type="PackedScene" uid="uid://bsm84i4uvyjp4" path="res://GUI/ui.tscn" id="2_5s25c"]
+[ext_resource type="PackedScene" uid="uid://dii417cwpncrl" path="res://Cursors/cursor.tscn" id="3_noyq5"]
+[ext_resource type="AudioStream" uid="uid://ddoqbk43dyvox" path="res://Audio/placementsong.wav" id="6_edxso"]
+[ext_resource type="AudioStream" uid="uid://di3x085tnavsm" path="res://Audio/activesong.wav" id="7_3cmxt"]
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_0eu2r")
+
+[node name="Background" parent="." instance=ExtResource("1_rrpkp")]
+
+[node name="Table" parent="." instance=ExtResource("1_ahw47")]
+
+[node name="UI" parent="." instance=ExtResource("2_5s25c")]
+
+[node name="Cursor" parent="." instance=ExtResource("3_noyq5")]
+
+[node name="PlaceSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_edxso")
+volume_db = -7.0
+autoplay = true
+bus = &"Music"
+
+[node name="ActiveSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3cmxt")
+volume_db = -8.0
+bus = &"Music"
+
+[connection signal="end_screen" from="Table" to="UI" method="_on_table_end_screen"]
+[connection signal="entered" from="Table" to="UI" method="_on_table_entered"]
+[connection signal="load_deck" from="Table" to="UI" method="_on_table_load_deck"]
+[connection signal="needplayer" from="Table" to="UI" method="_on_table_needplayer"]
+[connection signal="placed" from="Table" to="UI" method="_on_table_placed"]
+[connection signal="shown" from="Table" to="UI" method="_on_table_shown"]
+[connection signal="played" from="UI" to="Table" method="_on_ui_played"]

@@ -1,0 +1,416 @@
+[gd_scene load_steps=12 format=3 uid="uid://y6golp80ftpv"]
+
+[ext_resource type="Script" path="res://GUI/home.gd" id="1_jkfcn"]
+[ext_resource type="Texture2D" uid="uid://56o3444nfawk" path="res://GUI/bacg.png" id="2_65035"]
+[ext_resource type="Texture2D" uid="uid://c0etsep4ykr3h" path="res://Decks/Images/deckpack.png" id="3_3l1da"]
+[ext_resource type="Theme" uid="uid://cugfbi5aipcyl" path="res://GUI/menu.tres" id="3_gycpy"]
+[ext_resource type="Texture2D" uid="uid://btovkxfxgtq2m" path="res://Overlays/Deck/DeckFrame/0025.png" id="4_66hnk"]
+[ext_resource type="Texture2D" uid="uid://6xs5e7yadiwx" path="res://Cards/Images/Player/Bodies.jpg" id="5_1rij8"]
+[ext_resource type="Texture2D" uid="uid://bgkxa7w3vqk6y" path="res://Cards/Images/Back2.jpg" id="5_sv2f0"]
+[ext_resource type="Texture2D" uid="uid://t1jv7prad7tp" path="res://Cards/Images/Asset/Disco.jpg" id="7_8pkf8"]
+[ext_resource type="Texture2D" uid="uid://dff3j84wga81t" path="res://Cards/Images/Effect/Burned.jpg" id="8_2c7jl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1up8e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5swvt"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkfcn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0, 0.513726, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+modulate = Color(0, 0, 1, 0.454902)
+material = SubResource("CanvasItemMaterial_1up8e")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0291667
+anchor_top = -0.025
+anchor_right = 1.02917
+anchor_bottom = 0.975
+offset_top = -21.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_65035")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_gycpy")
+scroll_vertical = 3072
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Tutorial"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[node name="Label2" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]Welcome to purgatory man"
+fit_content = true
+
+[node name="Label3" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]If this is your first time, don't be scared, most people tend to be out of here in an eon or two, it's just routine
+"
+fit_content = true
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[node name="Label4" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]And since we’re here a little under eternity we all play a little game we like to call  [rainbow freq=1.0 sat=0.8 val=0.8] [font_size=30][font=Fonts/Alkhemikal.ttf]Atrocities of Scale[/font][/font_size][/rainbow]"
+fit_content = true
+
+[node name="Label5" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]which has the honor of being hosted on one of the first if not the first website here !!!! this has been a long time coming so it's great "
+fit_content = true
+
+[node name="Label6" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]to have it finally up and running. However some of the features like [color=yellow][url]Malice[/url][/color] might still be a bit buggy and the [color=yellow][url]Waiting Room[/url][/color] might have some "
+fit_content = true
+
+[node name="Label7" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]connection issues since we're still figuring out this whole WAN thing here so feel free to [color=yellow][url]Report[/url][/color] any issues you might run into"
+fit_content = true
+
+[node name="HSeparator4" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[node name="Label8" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]But enough wasting time we have enough of that here lets get you playing
+"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+texture = ExtResource("3_3l1da")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label9" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]this is what we call a [b][color=white][hint=each of these packs contain usually 50 cards]PACK[/hint][/color]"
+fit_content = true
+
+[node name="Label10" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]Each game starts with [b][i]three[/i][/b] of these, each of which contains a [b][color=violet][hint=since the pack is 50 cards, each player gets 25 cards starting in their deck]DECK[/hint][/color][/b] of cards you and your opponent will be splitting "
+fit_content = true
+
+[node name="Label11" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]At the start of the game, the challenger picks one [b][color=white][hint=the packs vibrate when its your turn to remove them]PACK[/hint][/color][/b] to remove, and then the other player picks another [b][color=white][hint=almost like they're scared!!]PACK[/hint][/color][/b]  to remove"
+fit_content = true
+
+[node name="Label12" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]The remaining [b][color=white][hint=pick your favorite color]PACK[/hint][/color][/b]  will be what you split with your opponent to determine your starting [b][color=violet][hint= you share a fate now not matter who wins]DECKS[/hint][/color][/b] "
+fit_content = true
+
+[node name="HSeparator5" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_66hnk")
+stretch_mode = 1
+
+[node name="HSeparator6" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[node name="Label13" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]This [b][i]25 card[/i][/b] [b][color=violet][hint=don't be scared to play cards though just make it so the other player has to play more]DECK[/hint][/color][/b]  is very important as it determines how much health you have, meaning if you run out of all your cards you [b][color=red][hint=dont worry there's another possible lose condition if you think this is too lenient]LOSE[/hint][/color][/b] "
+fit_content = true
+
+[node name="Label14" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]At the beginning of each turn you're dealt cards until you have 7 cards in your hand, and can click the deck in the corner to draw more"
+fit_content = true
+
+[node name="Label15" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] each card of which can be one of [b][i]three[/i][/b] types: [b][color=INDIAN_RED][hint=these are reddish and have a speed, health and damage]PLAYER[/hint][/color][/b], [b][color=CORNFLOWER_BLUE ][hint=these are blueish and have purple text]ASSET[/hint][/color][/b], [b][color=YELLOW][hint=these are yellow with blue text]EFFECT[/hint][/color][/b]"
+fit_content = true
+
+[node name="TextureRect4" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 2
+texture = ExtResource("5_sv2f0")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label21" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] You start each turn in [b][hint=SPACEBAR or E]PLACEMENT[/hint][/b] mode where you can [b][color=FIREBRICK    ][hint=SPACEBAR or E]TRANSLATE[/hint][/color][/b] each of these cards across the board."
+fit_content = true
+
+[node name="Label22" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]Each of these cards spawns something which depends on the type of card it is. You can also [b][color=MEDIUM_SPRING_GREEN  ][hint=this shows as a line around the card after you click once you scale]ROTATE[/hint][/color][/b] each of the cards to direct this spawn. For most cards this is the direction of the lashes on the eye on the back. "
+fit_content = true
+
+[node name="Label23" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]But whatever you can rotate cards in real life, the real fun of purgatory and the namesake of this game is  [shake rate=20.0 level=5 connected=1][b][color=STEEL_BLUE   ][hint=this shows as a circle when you click once after placing]SCALE[/hint][/color][/b][/shake], which is exactly what you think, you can scale cards to make them stronger or any number of other effects"
+fit_content = true
+
+[node name="Label24" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]Once you are satisfied with the cards you placed, which could be [hint=you might notice that some of the cards were blocked off, we'll get to that]all of them[/hint] or just [hint=you can do this if you have a player card on the board]none[/hint] you can start [b][hint=SPACEBAR or E]SPAWN[/hint][/b] mode by pressing the [img width=75]Cursors/Default/ButtonNormal.png[/img] button where depending on the types of each of the cards things will [wave amp=50.0 freq=5.0 connected=1]spawn[/wave] like [i]magic[/i]"
+fit_content = true
+
+[node name="TextureRect3" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 2
+texture = ExtResource("5_1rij8")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label16" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] This a [b][color=INDIAN_RED][hint=specifically the BODIES Player card]PLAYER[/hint][/color][/b] type card and is the most important card type of the game, as without any on the board you can't even play, and if there's none in your hand either ready to play you have to keep drawing from the deck until you have one, but be careful cause if you draw all your cards from the deck you [b][color=red][hint=there is a secret tie breaker if you both run out of cards which is how many cards you have on the table with larger cards being assigned more weight]LOSE[/hint][/color][/b] "
+fit_content = true
+
+[node name="Label17" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] this card type has a couple abilities, one of which is letting you scale down your [shake rate=20.0 level=5 connected=1]soul[/shake] into a character [b][color=white][hint=each card has a spawn from it, this one can be controlled]SPAWNED[/hint][/color][/b] from it and [hint=WASD or arrow keys]walk[/hint] around the table as if you were a real actual little character, it's quite fun actually. For this card specifically it has a speed of [color=CYAN][b]25[/b][/color] which is actually on the higher end"
+fit_content = true
+
+[node name="Label18" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] But it would be boring if that's all you could do, see not only that but you can [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E]BURN[/hint][/color][/b] cards which removes them from the board, preventing anything from [b][color=white ][hint=this doesn't remove anything already spawned from it from the board]SPAWNING[/hint][/color][/b] from it, along with removing any effects of the card on the board"
+fit_content = true
+
+[node name="Label20" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] You can [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E]BURN[/hint][/color][/b] cards by standing on top of them and pressing [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E]BURN[/hint][/color][/b]"
+fit_content = true
+
+[node name="Label19" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] However you can only [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E]BURN[/hint][/color][/b] cards if you aren't [hint=WASD or arrow keys]moving around [/hint] which you have to be careful with since if you aren't moving you can't avoid  [b][color=white ][hint=things that move around and deal damage to you]PROJECTILES[/hint][/color][/b] and will lose  [b][color=green ][hint=anything that loses health can heal too theoretically...]HEALTH[/hint][/color][/b]  if you get hit"
+fit_content = true
+
+[node name="Label25" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] Each [b][color=INDIAN_RED][hint=player is the type of the card but also what the thing spawned from it that you control is called]PLAYER[/hint][/color][/b]  has a [b][color=green ][hint=the health goes away very quick this is a merciless game]HEALTH[/hint][/color][/b] which when depleted will send you to another random  [b][color=INDIAN_RED][hint=if there is only one player card that is the one you'll always spawn from]PLAYER[/hint][/color][/b]  card you placed on the board, which could be the same one, and spawns another body for you to inhabit"
+fit_content = true
+
+[node name="Label26" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] But this isn't hell, so you can also send  [b][color=white ][hint=these projectiles dont even need to move in the example card they don't they are simply a snail trail behind you]PROJECTILES[/hint][/color][/b] back out, which depends on the card what type and how it's triggered. "
+fit_content = true
+
+[node name="Label29" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] But you're worried about dying easily, you can [shake rate=10.0 level=5 connected=1][b][color=STEEL_BLUE   ][hint=there is a max scale]SCALE[/hint][/color][/b][/shake] any  [b][color=INDIAN_RED][hint=with enough health you can even walk over and burn your opponents player cards]PLAYER[/hint][/color][/b] card to [hint=sacrificing it's speed however]increase it's [b][color=green ]HEALTH[/color][/b][/hint]"
+fit_content = true
+
+[node name="Label31" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] Just be aware that when  [b][color=white ][hint=as long as the timer in the corner when you press the button is active]SPAWN[/hint][/color][/b]  mode is active you cant put another [b][color=INDIAN_RED][hint=this shows as a brick texture on top of the card]PLAYER[/hint][/color][/b] on the board until the [img width=75]Cursors/Default/TimerProgress.png[/img] timer runs out and the next turn starts"
+fit_content = true
+
+[node name="TextureRect5" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 2
+texture = ExtResource("7_8pkf8")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label27" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] But if it were just you and another  [b][color=INDIAN_RED][hint=there will always be max two players on the board]PLAYER[/hint][/color][/b] then it would just be a race to  [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E]BURN[/hint][/color][/b]  eachothers cards before you lose  [b][color=green ][hint=your attacks are very strong most of the time if one lands your opponent will die]HEALTH[/hint][/color][/b]. So to mitigate that we have [b][color=CORNFLOWER_BLUE ][hint=these are blueish and have purple text]ASSET[/hint][/color][/b] cards which are the most common type of card"
+fit_content = true
+
+[node name="Label28" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] These cards can spawn anything like [hint=that is literally what the card above does] a disc that bounces around the boundaries of the map [/hint] most of these cards have a [shake rate=20.0 level=5 connected=1][b][color=STEEL_BLUE   ][hint=SPACEBAR or E]SCALE[/hint][/color][/b][/shake] effect and a [b][color=MEDIUM_SPRING_GREEN  ][hint=this shows as a line around the card after you click once you scale]ROTATE[/hint][/color][/b] effect which is usually increasing the damage dealt, and directing the attack specifically"
+fit_content = true
+
+[node name="Label30" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] Like [b][color=INDIAN_RED][hint=a burned player card wont respawn]PLAYER[/hint][/color][/b] cards they won't respawn if [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E, or play a specific effect card that can do it for you......]BURNED[/hint][/color][/b] , but unlike them they can't [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E, but maybe an effect card can]BURN[/hint][/color][/b] other cards and can be played in either mode"
+fit_content = true
+
+[node name="TextureRect6" type="TextureRect" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 2
+texture = ExtResource("8_2c7jl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label32" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] This is unlike the elusive  [b][color=YELLOW][hint=these are yellow with blue text]EFFECT[/hint][/color][/b] cards which can only be played in  [b][color=white ][hint=yes you can even play cards in spawn mode]SPAWN[/hint][/color][/b] mode. These cards do anything else the other two can't do, like this which lets you simply click on a card to [b][color=MEDIUM_VIOLET_RED ][hint=normally you can only burn cards that have been revealed, but this can burn any hidden card too]BURN[/hint][/color][/b] it, at a price. These usually pop up on the board face down like in [b][color=white ][hint=when you press the button to swap to spawn mode you can still place cards up until the other player presses it which is when the actual mode starts]PLACEMENT[/hint][/color][/b] which you need to walk [i]across[/i] to flip"
+fit_content = true
+
+[node name="Label33" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center] With these cards you aim to [rainbow freq=1.0 sat=0.8 val=0.8][b][color=MEDIUM_SEA_GREEN ]WIN[/color][/b][/rainbow] by either [b][color=MEDIUM_VIOLET_RED ][hint=SPACEBAR or E, or play a specific effect card that can do it for you]BURNING[/hint][/color][/b] all your opponents player cards, or letting them play all the cards they have till you're a [wave amp=10.0 freq=5.0 connected=1][rainbow freq=0.5 sat=0.8 val=0.8][b][color=MEDIUM_SEA_GREEN ][hint=you're a loser to me if you win this way just so we're clear]WINNER[/hint][/color][/b][/rainbow][/wave] by default"
+fit_content = true
+
+[node name="Label34" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]Now you're fully ready to play [shake rate=20.0 level=5 connected=1][wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8] [font_size=30][font=Fonts/Alkhemikal.ttf][url]Atrocities of Scale!!![/url][/font][/font_size][/rainbow][/wave][/shake]"
+fit_content = true
+
+[node name="Label35" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]head over to the [color=yellow][url]Waiting Room[/url][/color] to find another person to play with, or play with our new AI [color=yellow][url]Malice[/url][/color]"
+fit_content = true
+
+[node name="HSeparator7" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5swvt")
+
+[connection signal="meta_clicked" from="ScrollContainer/MarginContainer/VBoxContainer/Label6" to="." method="on_label_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/MarginContainer/VBoxContainer/Label7" to="." method="on_label_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/MarginContainer/VBoxContainer/Label34" to="." method="on_label_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/MarginContainer/VBoxContainer/Label35" to="." method="on_label_clicked"]

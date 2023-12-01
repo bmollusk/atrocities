@@ -1,0 +1,177 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4bl3mnvpbye0"]
+
+[ext_resource type="PackedScene" uid="uid://c6m6q53ykyin3" path="res://Cards/Spawns/Player/play.tscn" id="1_booad"]
+[ext_resource type="Texture2D" uid="uid://d2grpw8aaof3w" path="res://Cards/Spawns/Player/Images/metalman.png" id="2_bjw4h"]
+[ext_resource type="Script" path="res://Cards/Spawns/Player/bodies.gd" id="2_bpp83"]
+[ext_resource type="Script" path="res://Cards/Spawns/Player/Trail.gd" id="4_hyblh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkqw7"]
+radius = 16.0
+height = 43.0
+
+[sub_resource type="Animation" id="Animation_ots8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c1n6m"]
+resource_name = "death"
+length = 1.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [31, 21, 20, 29, 19, 18, 27, 26, 25, 24, 18, 23, 22, 21, 20, 19, 18, 17, 16]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"destroy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mhijr"]
+resource_name = "destroy"
+length = 3.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"destroy_card"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:card_under_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.309804, 0.0666667, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rqnpy"]
+resource_name = "walk"
+length = 8.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcmja"]
+_data = {
+"RESET": SubResource("Animation_ots8c"),
+"death": SubResource("Animation_c1n6m"),
+"destroy": SubResource("Animation_mhijr"),
+"walk": SubResource("Animation_rqnpy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfmyp"]
+size = Vector2(80, 417)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qys0r"]
+size = Vector2(83, 410)
+
+[node name="Bodies" instance=ExtResource("1_booad")]
+script = ExtResource("2_bpp83")
+BASEHEALTH = 40
+
+[node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rkqw7")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(9, -183)
+scale = Vector2(0.488, 0.488)
+texture = ExtResource("2_bjw4h")
+hframes = 10
+vframes = 4
+
+[node name="AnimationPlayer" parent="Sprite2D" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_kcmja")
+}
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-1, -179.5)
+shape = SubResource("RectangleShape2D_mfmyp")
+
+[node name="Trail" type="AnimatableBody2D" parent="." index="4"]
+visible = false
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_hyblh")
+damage = 15.0
+maxAge = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trail" index="0"]
+position = Vector2(1.5, -179)
+shape = SubResource("RectangleShape2D_qys0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trail" index="1"]
+position = Vector2(11, -183)
+scale = Vector2(0.488, 0.488)
+texture = ExtResource("2_bjw4h")
+hframes = 10
+vframes = 4
+
+[connection signal="frame_changed" from="Sprite2D" to="." method="_on_sprite_2d_frame_changed"]
+[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

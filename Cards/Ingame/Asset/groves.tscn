@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj8xqlwhiyhs1"]
+
+[ext_resource type="PackedScene" uid="uid://dl7ggp8eqn0jo" path="res://Cards/Ingame/ingame_card.tscn" id="1_njxiv"]
+[ext_resource type="Script" path="res://Cards/Ingame/Asset/groves.gd" id="2_ilqh4"]
+
+[node name="Groves" instance=ExtResource("1_njxiv")]
+script = ExtResource("2_ilqh4")
+
+[node name="Area2D" parent="." index="2"]
+audio_bus_override = true
+audio_bus_name = &"Muffle"

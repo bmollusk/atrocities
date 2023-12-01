@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://duynn7rmo7kpl"]
+
+[ext_resource type="Script" path="res://GUI/Client.gd" id="1_yr6aa"]
+[ext_resource type="PackedScene" uid="uid://ppsoawqox2pp" path="res://GUI/multiplayer_card.tscn" id="2_t5j3s"]
+[ext_resource type="Theme" uid="uid://cugfbi5aipcyl" path="res://GUI/menu.tres" id="2_tc0nm"]
+
+[sub_resource type="Theme" id="Theme_wugvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ibt4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0q3uw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80gsa"]
+
+[node name="MulltiplayerMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Client" type="Node" parent="."]
+script = ExtResource("1_yr6aa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0, 0.513726, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 13
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_tc0nm")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme = SubResource("Theme_wugvt")
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="MultiplayerCard" parent="MarginContainer" instance=ExtResource("2_t5j3s")]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+ignore_texture_size = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 53.0
+offset_top = 30.0
+offset_right = 118.0
+offset_bottom = 53.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0ibt4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0q3uw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_80gsa")
+text = "<<<Back"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="MarginContainer/MultiplayerCard" to="Client" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Client" method="_on_back_button_pressed"]

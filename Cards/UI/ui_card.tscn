@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv5wmoevylp54"]
+
+[ext_resource type="Script" path="res://Cards/UI/ui_card.gd" id="1_m4vh2"]
+[ext_resource type="Texture2D" uid="uid://dff3j84wga81t" path="res://Cards/Images/Effect/Burned.jpg" id="2_5y0pq"]
+[ext_resource type="Texture2D" uid="uid://bm5xsqka20gg" path="res://Cards/Images/Disabled.png" id="3_oid4q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q0pcx"]
+blend_mode = 4
+
+[node name="UICard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m4vh2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+custom_minimum_size = Vector2(115, 115)
+layout_mode = 2
+texture_normal = ExtResource("2_5y0pq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureButton"]
+visible = false
+modulate = Color(1, 1, 1, 0.129412)
+material = SubResource("CanvasItemMaterial_q0pcx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_oid4q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HoverTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="mouse_entered" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="timeout" from="HoverTimer" to="." method="_on_hover_timer_timeout"]

@@ -1,0 +1,186 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6i11bi1jnq3w"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_bi3hq"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/flower.gd" id="2_2jmpc"]
+[ext_resource type="Texture2D" uid="uid://biwvpm2c2spvt" path="res://Cards/Spawns/Asset/Images/flower.png" id="2_bqdmw"]
+[ext_resource type="Texture2D" uid="uid://duw8f4aimmvr5" path="res://Cards/Spawns/Asset/Images/force.png" id="3_1s1sv"]
+[ext_resource type="AudioStream" uid="uid://cwmusvdnujcx7" path="res://Audio/hum.wav" id="5_7yvtp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_um2du"]
+radius = 53.0477
+
+[sub_resource type="Animation" id="Animation_yrepx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Force:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.34576, 2.34576)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Force2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.03725, 0.960292)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Force3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.45186, 2.26994)]
+}
+
+[sub_resource type="Animation" id="Animation_qc7wc"]
+resource_name = "hypno"
+length = 4.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Force:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.03725, 0.960292), Vector2(2.20862, 2.04474), Vector2(0.982915, 0.909986), Vector2(1.03725, 0.960292)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Force2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.51195, 2.32557), Vector2(0.975537, 0.903155), Vector2(1.03725, 0.960292), Vector2(2.51195, 2.32557)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Force3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.73548, 1.60671), Vector2(2.45186, 2.26994), Vector2(1.65184, 1.52928), Vector2(1.73548, 1.60671)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1rn6"]
+_data = {
+"RESET": SubResource("Animation_yrepx"),
+"hypno": SubResource("Animation_qc7wc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylpwi"]
+radius = 894.014
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8f7n"]
+radius = 576.586
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fjx5"]
+radius = 335.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_he7sx"]
+radius = 127.012
+
+[node name="Flower" instance=ExtResource("1_bi3hq")]
+script = ExtResource("2_2jmpc")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bqdmw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, -4)
+shape = SubResource("CircleShape2D_um2du")
+
+[node name="Force" type="Sprite2D" parent="." index="2"]
+position = Vector2(-12, 1)
+rotation = -0.0898959
+scale = Vector2(2.34576, 2.34576)
+texture = ExtResource("3_1s1sv")
+
+[node name="Force2" type="Sprite2D" parent="." index="3"]
+position = Vector2(-12, 1)
+rotation = -0.0898959
+scale = Vector2(1.03725, 0.960292)
+texture = ExtResource("3_1s1sv")
+
+[node name="Force3" type="Sprite2D" parent="." index="4"]
+position = Vector2(-12, 1)
+rotation = -0.0898959
+scale = Vector2(2.45186, 2.26994)
+texture = ExtResource("3_1s1sv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_g1rn6")
+}
+
+[node name="Area1" type="Area2D" parent="." index="6"]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area1" index="0"]
+shape = SubResource("CircleShape2D_ylpwi")
+
+[node name="Area2" type="Area2D" parent="." index="7"]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2" index="0"]
+shape = SubResource("CircleShape2D_x8f7n")
+
+[node name="Area3" type="Area2D" parent="." index="8"]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area3" index="0"]
+shape = SubResource("CircleShape2D_1fjx5")
+
+[node name="Area4" type="Area2D" parent="." index="9"]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area4" index="0"]
+shape = SubResource("CircleShape2D_he7sx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource("5_7yvtp")
+autoplay = true
+max_distance = 1000.0
+attenuation = 2.0
+panning_strength = 2.0
+bus = &"TableSounds"
+
+[connection signal="body_entered" from="Area1" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area1" to="." method="_on_area_body_exited"]
+[connection signal="body_entered" from="Area2" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area2" to="." method="_on_area_body_exited"]
+[connection signal="body_entered" from="Area3" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area3" to="." method="_on_area_body_exited"]
+[connection signal="body_entered" from="Area4" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area4" to="." method="_on_area_body_exited"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://wmhcjy15miaq"]
+
+[ext_resource type="Texture2D" uid="uid://16lqkbqsumq4" path="res://Cards/Ingame/Effect/Images/Cursor.png" id="1_adujf"]
+[ext_resource type="Script" path="res://Cards/Ingame/Effect/burned.gd" id="2_m1yaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2q8m"]
+size = Vector2(86, 94)
+
+[node name="Burned" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("2_m1yaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-22, -22)
+scale = Vector2(0.380952, 0.380952)
+texture = ExtResource("1_adujf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_c2q8m")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

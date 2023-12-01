@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://cu8t2eqxxivw7"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_dw5hc"]
+[ext_resource type="Texture2D" uid="uid://dunhh0qqc10ka" path="res://Cards/Spawns/Asset/Images/alienman.png" id="2_8mo2d"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/alien.gd" id="2_xkqkg"]
+[ext_resource type="AudioStream" uid="uid://t4vgeh7r320v" path="res://Audio/alien.wav" id="4_l42g0"]
+
+[sub_resource type="Animation" id="Animation_wrko4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xvwhg"]
+resource_name = "decay"
+length = 2.7
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1nt1"]
+_data = {
+"RESET": SubResource("Animation_wrko4"),
+"decay": SubResource("Animation_xvwhg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j4jy7"]
+radius = 23.0
+height = 154.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j1jdj"]
+streams_count = 1
+playback_mode = 2
+random_pitch = 2.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("4_l42g0")
+stream_0/weight = 1.0
+
+[node name="Alien" instance=ExtResource("1_dw5hc")]
+position = Vector2(-1, -149)
+collision_layer = 0
+sync_to_physics = false
+script = ExtResource("2_xkqkg")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_8mo2d")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_t1nt1")
+}
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(3, 102)
+shape = SubResource("CapsuleShape2D_j4jy7")
+
+[node name="CloneTimer" type="Timer" parent="." index="2"]
+wait_time = 0.25
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = SubResource("AudioStreamRandomizer_j1jdj")
+volume_db = -3.475
+pitch_scale = 0.76
+max_distance = 1000.0
+attenuation = 2.0
+panning_strength = 2.25
+bus = &"TableSounds"
+
+[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="CloneTimer" to="." method="_on_clone_timer_timeout"]

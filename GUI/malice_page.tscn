@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfx2kv17jg0mx"]
+
+[ext_resource type="Script" path="res://GUI/malice_page.gd" id="1_ciwaq"]
+[ext_resource type="Texture2D" uid="uid://56o3444nfawk" path="res://GUI/bacg.png" id="2_ckqws"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1up8e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_512om"]
+
+[node name="MalicePage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ciwaq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0, 0.513726, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+modulate = Color(0, 0, 1, 0.454902)
+material = SubResource("CanvasItemMaterial_1up8e")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0291667
+anchor_top = -0.025
+anchor_right = 1.02917
+anchor_bottom = 0.975
+offset_top = -21.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ckqws")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_512om")
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Malice "
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_512om")
+
+[node name="Label2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]Playing cards with yourself gets a bit tiring, so in the early days of scales of atrocity, or  [rainbow freq=1.0 sat=0.8 val=0.8] [font_size=30][font=Fonts/Alkhemikal.ttf]Atrocities of Scale[/font][/font_size][/rainbow] as it's now known, one of the first AIs in purgatory was created, called[shake rate=20.0 level=5 connected=1] [color=LEMON_CHIFFON ][b]MALICE[/b][/color][/shake]"
+fit_content = true
+
+[node name="Label3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]This AI was modeled loosely after one of the developers, and harbors strong animosity to any opponent, doing anything to win, often even blinded in rage. I mean what use is a testing AI if not to play aggressively to find bugs"
+fit_content = true
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_512om")
+
+[node name="Label4" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]What better way to find out than to [wave amp=50.0 freq=5.0 connected=1][color=yellow][url]Play Them Yourself[/url][/color][/wave]"
+fit_content = true
+
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/Label4" to="." method="_on_label_4_meta_clicked"]

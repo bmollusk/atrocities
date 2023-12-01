@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://04jcvxb1c5li"]
+
+[ext_resource type="PackedScene" uid="uid://eahkx6j338qf" path="res://Level/ai_test_level.tscn" id="1_iquyw"]
+[ext_resource type="PackedScene" uid="uid://b8pe3xxjde5gd" path="res://AIs/malice.tscn" id="2_jwgux"]
+
+[node name="MaliceLevel" instance=ExtResource("1_iquyw")]
+
+[node name="Table" parent="." index="1" node_paths=PackedStringArray("ai_node")]
+ai_node = NodePath("../Malice")
+
+[node name="UI" parent="." index="2" node_paths=PackedStringArray("ai_node")]
+ai_node = NodePath("../Malice")
+
+[node name="Malice" parent="." index="4" instance=ExtResource("2_jwgux")]
+
+[connection signal="end_screen" from="Table" to="UI" method="_on_table_end_screen"]

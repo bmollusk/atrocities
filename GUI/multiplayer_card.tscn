@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ppsoawqox2pp"]
+
+[ext_resource type="Texture2D" uid="uid://c5olw53llmv6q" path="res://Cursors/Default/Multiplayer.png" id="1_118w8"]
+[ext_resource type="Texture2D" uid="uid://cgivnvp0ms5dk" path="res://Cursors/Default/MultiplayerPressed.png" id="2_1ecdh"]
+[ext_resource type="Texture2D" uid="uid://copk0xhysjxot" path="res://Cursors/Default/MultiplayerHover.png" id="3_ewbm1"]
+[ext_resource type="Script" path="res://GUI/multiplayer_card.gd" id="4_2rtgo"]
+[ext_resource type="Texture2D" uid="uid://bieoom772e88q" path="res://Cursors/Default/MultiplayerDisabled.png" id="4_it2v8"]
+
+[node name="MultiplayerCard" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_118w8")
+texture_pressed = ExtResource("2_1ecdh")
+texture_hover = ExtResource("3_ewbm1")
+texture_disabled = ExtResource("4_it2v8")
+script = ExtResource("4_2rtgo")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.364706, 0.364706, 0.364706, 1)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 182.0
+offset_bottom = 156.0
+rotation = 0.00231033
+theme_override_font_sizes/font_size = 11
+text = "wefefwefewfwef"
+autowrap_mode = 1

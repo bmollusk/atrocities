@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u2r2wp5416kp"]
+
+[ext_resource type="Script" path="res://Cert/Cert.gd" id="1_uln3s"]
+
+[node name="Cert" type="Node"]
+script = ExtResource("1_uln3s")

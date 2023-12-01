@@ -1,0 +1,124 @@
+[gd_scene load_steps=5 format=3 uid="uid://eh5fo4sapo1u"]
+
+[ext_resource type="Script" path="res://GUI/home.gd" id="1_iuw51"]
+[ext_resource type="Texture2D" uid="uid://56o3444nfawk" path="res://GUI/bacg.png" id="2_7ag8r"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1up8e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_512om"]
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iuw51")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0, 0.513726, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+modulate = Color(0, 0, 1, 0.454902)
+material = SubResource("CanvasItemMaterial_1up8e")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0291667
+anchor_top = -0.025
+anchor_right = 1.02917
+anchor_bottom = 0.975
+offset_top = -21.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7ag8r")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxEmpty_512om")
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Welcome to Purgatory's [shake rate=20.0 level=5 connected=1][color=green]FIRST!!!![/color][/shake] website[/center]"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_512om")
+
+[node name="Label2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]We do ONE thing and ONE thing only here and that is play our favorite game to play to pass the eons! [/center]"
+fit_content = true
+
+[node name="Label3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]and that is [rainbow freq=1.0 sat=0.8 val=0.8] [font_size=30][font=Fonts/Alkhemikal.ttf]Atrocities of Scale[/font][/font_size][/rainbow] the worlds biggest and (smallest haha) card game"
+fit_content = true
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_512om")
+
+[node name="Label4" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]If you don't know what I'm talking about, first: my condolences, second: go to the [color=yellow][url]Tutorial[/url]"
+fit_content = true
+
+[node name="Label5" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]If you do know what im talking about: welcome back! to go play with [color=yellow][url]Malice[/url][/color] or go play with others in the [color=yellow][url]Waiting Room[/url][/color]"
+fit_content = true
+
+[node name="Label6" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center]If you're curious about who we are go to [color=yellow][url]About[/url][/color]"
+fit_content = true
+
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/Label4" to="." method="on_label_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/Label5" to="." method="on_label_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/Label6" to="." method="on_label_clicked"]

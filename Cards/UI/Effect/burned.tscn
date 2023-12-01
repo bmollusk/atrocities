@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://4phie67hk27c"]
+
+[ext_resource type="PackedScene" uid="uid://cv5wmoevylp54" path="res://Cards/UI/ui_card.tscn" id="1_oj1ha"]
+[ext_resource type="Script" path="res://Cards/UI/Effect/burned.gd" id="2_5vin1"]
+
+[node name="Burned" instance=ExtResource("1_oj1ha")]
+script = ExtResource("2_5vin1")

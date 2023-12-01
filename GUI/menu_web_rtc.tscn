@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3 uid="uid://n8ecym500vt2"]
+
+[ext_resource type="Script" path="res://Multiplayer/Server.gd" id="1_fg1gt"]
+[ext_resource type="Script" path="res://Multiplayer/Client.gd" id="2_v0trw"]
+
+[node name="MenuWebRTC" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Server" type="Node" parent="."]
+script = ExtResource("1_fg1gt")
+
+[node name="Client" type="Node" parent="."]
+script = ExtResource("2_v0trw")
+ip = "127.0.0.1"
+
+[node name="Server2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="StartServer" type="Button" parent="Server2"]
+layout_mode = 2
+text = "Start Server
+"
+
+[node name="TestPacket2" type="Button" parent="Server2"]
+layout_mode = 2
+text = "Sent packet from server"
+
+[node name="Client2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -107.0
+offset_bottom = 107.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StartClient" type="Button" parent="Client2"]
+layout_mode = 2
+text = "Start Client"
+
+[node name="TestPacket" type="Button" parent="Client2"]
+layout_mode = 2
+text = "send packet from client"
+
+[node name="HSeparator" type="HSeparator" parent="Client2"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Client2"]
+layout_mode = 2
+
+[node name="JoinLobby" type="Button" parent="Client2"]
+layout_mode = 2
+text = "Join Lobby
+"
+
+[node name="Ping" type="Button" parent="Client2"]
+layout_mode = 2
+text = "Ping Peers"
+
+[node name="Button" type="Button" parent="Client2"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="ItemList" type="ItemList" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text_overrun_behavior = 0
+
+[connection signal="pressed" from="Server2/StartServer" to="Server" method="_on_start_server_pressed"]
+[connection signal="pressed" from="Server2/TestPacket2" to="Server" method="_on_test_packet_2_pressed"]
+[connection signal="pressed" from="Client2/StartClient" to="Client" method="_on_start_client_pressed"]
+[connection signal="pressed" from="Client2/TestPacket" to="Client" method="_on_test_packet_pressed"]
+[connection signal="pressed" from="Client2/JoinLobby" to="Client" method="_on_join_lobby_pressed"]
+[connection signal="pressed" from="Client2/Ping" to="Client" method="_on_ping_pressed"]
+[connection signal="pressed" from="Client2/Button" to="Client" method="_on_button_pressed"]
+[connection signal="item_clicked" from="ItemList" to="Client" method="_on_item_list_item_clicked"]

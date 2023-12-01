@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://brysdtuhr8c61"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_htlay"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/fish.gd" id="2_ne3nm"]
+[ext_resource type="Texture2D" uid="uid://cft3py8ic1a4q" path="res://Cards/Spawns/Asset/Images/fish.png" id="3_8vtni"]
+[ext_resource type="AudioStream" uid="uid://uecm06jcmhuf" path="res://Audio/splashfish.wav" id="4_nb6js"]
+
+[sub_resource type="Animation" id="Animation_lu2bd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lfp4u"]
+resource_name = "fish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fab6"]
+_data = {
+"RESET": SubResource("Animation_lu2bd"),
+"fish": SubResource("Animation_lfp4u")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wt7ni"]
+radius = 38.0
+height = 116.0
+
+[node name="Fish" instance=ExtResource("1_htlay")]
+collision_layer = 0
+sync_to_physics = false
+script = ExtResource("2_ne3nm")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-4, 0)
+texture = ExtResource("3_8vtni")
+hframes = 3
+vframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_6fab6")
+}
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, -9)
+shape = SubResource("CapsuleShape2D_wt7ni")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("4_nb6js")
+max_distance = 1000.0
+attenuation = 1.7
+panning_strength = 2.0
+bus = &"TableSounds"
+
+[connection signal="frame_changed" from="Sprite2D" to="." method="_on_sprite_2d_frame_changed"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drb6lqwojqp1v"]
+
+[ext_resource type="PackedScene" uid="uid://cu8t2eqxxivw7" path="res://Cards/Spawns/Asset/alien.tscn" id="2_wukjb"]
+[ext_resource type="PackedScene" uid="uid://b4bl3mnvpbye0" path="res://Cards/Spawns/Player/bodies.tscn" id="2_ybnt3"]
+
+[node name="AssetTester" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Bodies" parent="." instance=ExtResource("2_ybnt3")]
+position = Vector2(1096, 812)
+debug = true
+BASESPEED = 100.0
+
+[node name="Alien" parent="." instance=ExtResource("2_wukjb")]
+position = Vector2(1905, 723)
+debug = true

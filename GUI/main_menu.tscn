@@ -1,0 +1,184 @@
+[gd_scene load_steps=18 format=3 uid="uid://dalmkh1j7bfrr"]
+
+[ext_resource type="Script" path="res://GUI/main_menu.gd" id="1_72u5r"]
+[ext_resource type="Texture2D" uid="uid://bp8oenhal04nn" path="res://Overlays/BackClear.jpg" id="1_u4fu7"]
+[ext_resource type="Texture2D" uid="uid://crgneeh6bmqgk" path="res://GUI/logo.png" id="3_lk7fp"]
+[ext_resource type="PackedScene" uid="uid://eh5fo4sapo1u" path="res://GUI/home.tscn" id="5_7umfs"]
+[ext_resource type="PackedScene" uid="uid://y6golp80ftpv" path="res://GUI/tutorial.tscn" id="6_l24uy"]
+[ext_resource type="PackedScene" uid="uid://cfx2kv17jg0mx" path="res://GUI/malice_page.tscn" id="6_owahu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_expj7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_inpvl"]
+blend_mode = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8gopf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ms64"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5lbv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52bql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0l5j"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rmsuj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4o0eo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imvk5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlxgp"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_72u5r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_expj7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0390625, 0, 0.371094, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.737255, 0.737255, 0.737255, 1)
+material = SubResource("CanvasItemMaterial_inpvl")
+clip_contents = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_u4fu7")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_8gopf")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_lk7fp")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0.494118, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ms64")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5lbv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_52bql")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0l5j")
+toggle_mode = true
+button_pressed = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_rmsuj")
+text = "Home"
+alignment = 2
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0.494118, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ms64")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5lbv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_52bql")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0l5j")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_rmsuj")
+text = "Tutorial"
+alignment = 2
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0.494118, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ms64")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5lbv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_52bql")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0l5j")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_rmsuj")
+text = "Malice"
+alignment = 2
+
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 0.494118, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ms64")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5lbv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_52bql")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0l5j")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_rmsuj")
+text = "Waiting Room"
+alignment = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_4o0eo")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_imvk5")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_nlxgp")
+tab_alignment = 2
+clip_tabs = false
+tabs_visible = false
+
+[node name="Home" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("5_7umfs")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Tutorial" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("6_l24uy")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Malice" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("6_owahu")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="link" from="MarginContainer/VBoxContainer/TabContainer/Home" to="." method="_on_home_link"]
+[connection signal="link" from="MarginContainer/VBoxContainer/TabContainer/Tutorial" to="." method="_on_home_link"]

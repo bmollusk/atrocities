@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://eahkx6j338qf"]
+
+[ext_resource type="PackedScene" uid="uid://b8o7dy85mfa30" path="res://Backgrounds/background.tscn" id="1_5oq65"]
+[ext_resource type="PackedScene" uid="uid://718xxctblgwb" path="res://Table/table.tscn" id="2_q5kjv"]
+[ext_resource type="PackedScene" uid="uid://bsm84i4uvyjp4" path="res://GUI/ui.tscn" id="3_oquad"]
+[ext_resource type="PackedScene" uid="uid://dii417cwpncrl" path="res://Cursors/cursor.tscn" id="4_plqnh"]
+[ext_resource type="Texture2D" uid="uid://bupnhc368q8vc" path="res://Table/Malice/meattable.png" id="4_xbapq"]
+[ext_resource type="Texture2D" uid="uid://bju4upngdwhki" path="res://Table/Malice/meatside.png" id="5_2oukv"]
+[ext_resource type="AudioStream" uid="uid://ddoqbk43dyvox" path="res://Audio/placementsong.wav" id="7_j4b2n"]
+[ext_resource type="AudioStream" uid="uid://di3x085tnavsm" path="res://Audio/activesong.wav" id="8_qqat1"]
+
+[node name="AITestLevel" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_5oq65")]
+
+[node name="Table" parent="." instance=ExtResource("2_q5kjv")]
+texture = ExtResource("4_xbapq")
+sidetexture = ExtResource("5_2oukv")
+summoning_color = Color(0.0470588, 0.0901961, 0.2, 1)
+
+[node name="UI" parent="." instance=ExtResource("3_oquad")]
+
+[node name="Cursor" parent="." instance=ExtResource("4_plqnh")]
+
+[node name="PlaceSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j4b2n")
+volume_db = -7.0
+autoplay = true
+bus = &"Music"
+
+[node name="ActiveSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qqat1")
+volume_db = -8.0
+bus = &"Music"
+
+[connection signal="entered" from="Table" to="UI" method="_on_table_entered"]
+[connection signal="load_deck" from="Table" to="UI" method="_on_table_load_deck"]
+[connection signal="needplayer" from="Table" to="UI" method="_on_table_needplayer"]
+[connection signal="placed" from="Table" to="UI" method="_on_table_placed"]
+[connection signal="shown" from="Table" to="UI" method="_on_table_shown"]
+[connection signal="played" from="UI" to="Table" method="_on_ui_played"]

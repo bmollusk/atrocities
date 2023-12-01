@@ -1,0 +1,177 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsm84i4uvyjp4"]
+
+[ext_resource type="Script" path="res://GUI/UI.gd" id="1_ffpcj"]
+[ext_resource type="Texture2D" uid="uid://cvyb24xmjf8mf" path="res://Cursors/Default/TimerUnder.png" id="2_744cn"]
+[ext_resource type="Texture2D" uid="uid://bb583eixndiu" path="res://Cursors/Default/TimerProgress.png" id="3_6gaca"]
+[ext_resource type="FontFile" uid="uid://f2u7raebkfop" path="res://Fonts/Alkhemikal.ttf" id="4_bbmcm"]
+[ext_resource type="AudioStream" uid="uid://d2y38nsiitncv" path="res://Audio/502659__eggdeng__draw_card.mp3" id="6_0rlfa"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vcifj"]
+streams_count = 1
+random_pitch = 1.57
+random_volume_offset_db = 2.12
+stream_0/stream = ExtResource("6_0rlfa")
+stream_0/weight = 1.0
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ffpcj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Deck" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 15
+
+[node name="ActivateButton" type="TextureButton" parent="CanvasLayer/Deck"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+disabled = true
+ignore_texture_size = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Deck"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+fill_mode = 5
+texture_under = ExtResource("2_744cn")
+texture_progress = ExtResource("3_6gaca")
+
+[node name="ActiveTimer" type="Timer" parent="CanvasLayer/Deck"]
+wait_time = 120.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Deck"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="DeckAmount" type="RichTextLabel" parent="CanvasLayer/Deck/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.670588, 0.686275, 0.92549, 1)
+theme_override_constants/line_separation = -4
+theme_override_fonts/normal_font = ExtResource("4_bbmcm")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]0[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+visible_characters_behavior = 2
+
+[node name="DeckImage" type="TextureButton" parent="CanvasLayer/Deck/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Deck"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="DeckImage" type="TextureRect" parent="CanvasLayer/Deck/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="DeckAmount" type="RichTextLabel" parent="CanvasLayer/Deck/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.670588, 0.686275, 0.92549, 1)
+theme_override_constants/line_separation = -4
+theme_override_fonts/normal_font = ExtResource("4_bbmcm")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]0[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+visible_characters_behavior = 2
+
+[node name="Hand" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -135.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Hand"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 130
+
+[node name="OtherHand" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 135.0
+grow_horizontal = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/OtherHand"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 130
+
+[node name="Modal" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ModalCard" type="MarginContainer" parent="CanvasLayer/Modal"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Modal/ModalCard"]
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DrawCardAudio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_vcifj")
+max_polyphony = 2
+
+[connection signal="mouse_entered" from="CanvasLayer/Deck/ActivateButton" to="." method="_on_activate_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Deck/ActivateButton" to="." method="_on_activate_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Deck/ActivateButton" to="." method="_on_activate_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/Deck/ActiveTimer" to="." method="_on_active_timer_timeout"]
+[connection signal="mouse_entered" from="CanvasLayer/Deck/VBoxContainer/DeckImage" to="." method="_on_deck_image_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Deck/VBoxContainer/DeckImage" to="." method="_on_deck_image_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Deck/VBoxContainer/DeckImage" to="." method="_on_deck_image_pressed"]

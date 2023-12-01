@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dii417cwpncrl"]
+
+[ext_resource type="Script" path="res://Cursors/cursor.gd" id="2_abt6r"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("2_abt6r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+rotation = 3.14159

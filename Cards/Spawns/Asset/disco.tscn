@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://crds40qv8gew6"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_7k3vm"]
+[ext_resource type="Texture2D" uid="uid://832lsqp6cowh" path="res://Cards/Spawns/Asset/Images/disc.png" id="2_8p4b3"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/disco.gd" id="2_hnfpj"]
+[ext_resource type="AudioStream" uid="uid://xt2i8eaa2kel" path="res://Audio/discbounce.wav" id="4_h7dyw"]
+
+[sub_resource type="Animation" id="Animation_mvqo2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1dv48"]
+resource_name = "new_animation"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1f4oe"]
+_data = {
+"RESET": SubResource("Animation_mvqo2"),
+"disc": SubResource("Animation_1dv48")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1awf3"]
+radius = 27.0
+height = 156.0
+
+[node name="Disco" instance=ExtResource("1_7k3vm")]
+collision_layer = 0
+sync_to_physics = false
+script = ExtResource("2_hnfpj")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_8p4b3")
+hframes = 3
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_1f4oe")
+}
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-3, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1awf3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("4_h7dyw")
+volume_db = -7.0
+max_distance = 1000.0
+attenuation = 2.0
+panning_strength = 2.5
+bus = &"TableSounds"

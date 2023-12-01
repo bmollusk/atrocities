@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7sm6pbhheql"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_jiaqr"]
+[ext_resource type="Texture2D" uid="uid://cqdqwq2uk88ey" path="res://Cards/Spawns/Asset/Images/meatwall.png" id="2_qxarw"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/corpse.gd" id="2_s1s5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpi60"]
+size = Vector2(263.5, 261)
+
+[node name="Corpse" instance=ExtResource("1_jiaqr")]
+script = ExtResource("2_s1s5p")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_qxarw")
+hframes = 5
+vframes = 4
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(3.75, 40.5)
+shape = SubResource("RectangleShape2D_vpi60")

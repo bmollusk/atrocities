@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bunpmplm1w7ni"]
+
+[ext_resource type="PackedScene" uid="uid://bv87orrgq5ha8" path="res://Cards/Spawns/Asset/asset.tscn" id="1_ktivt"]
+[ext_resource type="Script" path="res://Cards/Spawns/Effect/hellfire_e.gd" id="2_asf0k"]
+[ext_resource type="Texture2D" uid="uid://b6nrre43vjk32" path="res://Cards/Spawns/Effect/Images/star.png" id="2_meghb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_niqve"]
+a = Vector2(-37.0642, -86.2785)
+b = Vector2(49.2618, 13.3409)
+
+[node name="HellfireE" instance=ExtResource("1_ktivt")]
+collision_mask = 2
+sync_to_physics = false
+script = ExtResource("2_asf0k")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2.93765, 1.06235)
+rotation = -0.123048
+scale = Vector2(0.466853, 0.466853)
+texture = ExtResource("2_meghb")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.937653, 23.0623)
+rotation = -0.123048
+scale = Vector2(0.623083, 0.623083)
+shape = SubResource("SegmentShape2D_niqve")

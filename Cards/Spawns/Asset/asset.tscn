@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv87orrgq5ha8"]
+
+[ext_resource type="Texture2D" uid="uid://b62dwkhgmvasi" path="res://icon.svg" id="1_gwcao"]
+[ext_resource type="Script" path="res://Cards/Spawns/Asset/asset.gd" id="1_piq5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vgx5"]
+size = Vector2(122, 78.5)
+
+[node name="Asset" type="AnimatableBody2D"]
+collision_layer = 8
+collision_mask = 29
+script = ExtResource("1_piq5y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gwcao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 22.75)
+shape = SubResource("RectangleShape2D_3vgx5")
